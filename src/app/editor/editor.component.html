@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Название:</span>
+    </div>
+    <input type="text" class="form-control" name="name" [(ngModel)]="shop.name">
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Адрес:</span>
+    </div>
+    <input type="text" class="form-control" name="address" [(ngModel)]="shop.address">
+  </div>
+  <div class="input-group mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Время работы:</span>
+    </div>
+    <input type="text" class="form-control" name="time" [(ngModel)]="shop.time">
+  </div>
+  <h4 class="mt-3">Товары:</h4>
+  <div class="card" *ngFor="let product of shop.products; let i = index">
+    <div class="card-body">
+      <div class="row">
+        <div class="input-group col-sm-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Название:</span>
+          </div>
+          <input type="text" class="form-control" name="name{{ i }}" [(ngModel)]="product.name">
+        </div>
+        <div class="input-group col-sm-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Описание:</span>
+          </div>
+          <input type="text" class="form-control" name="description{{ i }}" [(ngModel)]="product.description">
+        </div>
+        <div class="input-group col-sm-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Цена:</span>
+          </div>
+          <input type="text" class="form-control" name="price{{ i }}" [(ngModel)]="product.price">
+        </div>
+      </div>
+      <button class="btn btn-danger mt-2" (click)="deleteProduct(i)">Удалить</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Новый товар</h5>
+        <div class="row">
+            <div class="input-group col-sm-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Название:</span>
+              </div>
+              <input type="text" class="form-control" name="newname" [(ngModel)]="newProduct.name">
+            </div>
+            <div class="input-group col-sm-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Описание:</span>
+              </div>
+              <input type="text" class="form-control" name="newdescription" [(ngModel)]="newProduct.description">
+            </div>
+            <div class="input-group col-sm-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Цена:</span>
+              </div>
+              <input type="text" class="form-control" name="newprice" [(ngModel)]="newProduct.price">
+            </div>
+          </div>
+          <button class="btn btn-primary mt-2" (click)="addProduct()">Добавить</button>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary m-3" (click)="saveShop()">Сохранить</button>
+  <button type="button" class="btn btn-danger m-3" (click)="deleteShop()">Удалить магазин</button>
+</div>

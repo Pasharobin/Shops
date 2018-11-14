@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card" *ngFor="let shop of shops; let i=index">
+        <div class="card-body">
+          <h5 class="card-title" (click)="edit(i)">{{ i+1 }}. <span>{{ shop.name }}</span></h5>
+          <p class="card-text">Адрес: {{ shop.address }}<br>Время работы: {{ shop.time }}</p>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary mt-3 mb-3" (click)="addShop()">Добавить</button>
+    </div>
+    <div class="col-sm-8">
+      <app-map [shops]="shops"></app-map>
+    </div>
+  </div>
+</div>
